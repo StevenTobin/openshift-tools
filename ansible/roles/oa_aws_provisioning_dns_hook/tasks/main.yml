@@ -2,11 +2,11 @@
 - name: Update DNS for master elb
   route53:
     state: present
-    record_type: CNAME
+    type: CNAME
     zone: "{{ item.zone }}"
-    record_value: "{{ l_openshift_aws_elb_facts[openshift_clusterid + '-master-external']['dns_name'] }}"
-    record_fqdn: "{{ item.fqdn }}"
-    record_ttl: 120
+    value: "{{ l_openshift_aws_elb_facts[openshift_clusterid + '-master-external']['dns_name'] }}"
+    record: "{{ item.fqdn }}"
+    ttl: 120
   with_items:
   - zone: opentry.me
     fqdn: "{{ openshift_clusterid }}.opentry.me"
@@ -16,11 +16,11 @@
 - name: Update DNS for master internal ELB
   route53:
     state: present
-    record_type: CNAME
+    type: CNAME
     zone: "{{ item.zone }}"
-    record_value: "{{ l_openshift_aws_elb_facts[openshift_clusterid + '-master-internal']['dns_name'] }}"
-    record_fqdn: "{{ item.fqdn }}"
-    record_ttl: 120
+    value: "{{ l_openshift_aws_elb_facts[openshift_clusterid + '-master-internal']['dns_name'] }}"
+    record: "{{ item.fqdn }}"
+    ttl: 120
   with_items:
   - zone: opentry.me
     fqdn: "api.{{ openshift_clusterid }}.opentry.me"
@@ -29,11 +29,11 @@
 - name: Update DNS for infra ELB
   route53:
     state: present
-    record_type: CNAME
+    type: CNAME
     zone: "{{ item.zone }}"
-    record_value: "{{ l_openshift_aws_elb_facts[openshift_clusterid + '-infra']['dns_name'] }}"
-    record_fqdn: "{{ item.fqdn }}"
-    record_ttl: 120
+    value: "{{ l_openshift_aws_elb_facts[openshift_clusterid + '-infra']['dns_name'] }}"
+    record: "{{ item.fqdn }}"
+    ttl: 120
   with_items:
   - zone: opentry.me
     fqdn: "*.apps.{{ openshift_clusterid )).opentry.me"
