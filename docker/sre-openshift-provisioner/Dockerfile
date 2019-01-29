@@ -15,7 +15,7 @@ USER root
 RUN yum -y install git
 
 # Update the AWS client code so that operations like ec2_image work
-RUN pip install dyn awscli botocore boto3 -U
+RUN pip install awscli botocore boto3 -U
 
 RUN rm -rf ${SRE_OA_CLONE_LOCATION} && mkdir -p ${SRE_OA_CLONE_LOCATION}
 RUN git clone ${SRE_OA_URL} ${SRE_OA_CLONE_LOCATION} && \
