@@ -6,8 +6,8 @@ FROM openshift/origin-ansible:latest
 ARG SRE_OA_URL=https://github.com/openshift/openshift-ansible.git
 ARG SRE_OA_BRANCH=release-3.11
 ARG SRE_OA_CLONE_LOCATION=/usr/share/ansible/openshift-ansible
-ARG SRE_TOOLS_URL=https://github.com/openshift/openshift-tools.git
-ARG SRE_TOOLS_BRANCH=prod
+ARG SRE_TOOLS_URL=https://github.com/steventobin/openshift-tools.git
+ARG SRE_TOOLS_BRANCH=integreatly_cluster_create
 ARG SRE_TOOLS_CLONE_LOCATION=/opt/openshift-tools
 
 USER root
