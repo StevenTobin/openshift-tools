@@ -3,9 +3,11 @@
   route53:
     state: present
     type: CNAME
-    zone: "opentry.me"
+    zone: "{{ domain}}"
     value: "{{ l_openshift_aws_elb_facts[openshift_clusterid + '-master-external']['dns_name'] }}"
-    record: "{{ openshift_clusterid }}.opentry.me"
+    record: "{{ openshift_clusterid }}.{{ domain }}"
+    aws_access_key: "{{ dns_access_key }}"
+    aws_secret_key: "{{ dns_secret_key }}"
     ttl: 120
 
 
@@ -14,9 +16,11 @@
   route53:
     state: present
     type: CNAME
-    zone: "opentry.me"
+    zone: "{{ domain }}"
     value: "{{ l_openshift_aws_elb_facts[openshift_clusterid + '-master-internal']['dns_name'] }}"
-    record: "api.{{ openshift_clusterid }}.opentry.me"
+    record: "api.{{ openshift_clusterid }}.{{ domain}}"
+    aws_access_key: "{{ dns_access_key }}"
+    aws_secret_key: "{{ dns_secret_key }}"
     ttl: 120
 
 # infra: route
@@ -24,7 +28,9 @@
   route53:
     state: present
     type: CNAME
-    zone: "opentry.me"
+    zone: "{{ domain }}"
     value: "{{ l_openshift_aws_elb_facts[openshift_clusterid + '-infra']['dns_name'] }}"
-    record: "*.apps.{{ openshift_clusterid }}.opentry.me"
+    record: "*.apps.{{ openshift_clusterid }}.{{ domain }}"
+    aws_access_key: "{{ dns_access_key }}"
+    aws_secret_key: "{{ dns_secret_key }}"
     ttl: 120
