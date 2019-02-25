@@ -6,8 +6,8 @@
     zone: "{{ domain}}"
     value: "{{ l_openshift_aws_elb_facts[openshift_clusterid + '-master-external']['dns_name'] }}"
     record: "{{ openshift_clusterid }}.{{ domain }}"
-    aws_access_key: "{{ dns_access_key | default(aws_access_key) }}"
-    aws_secret_key: "{{ dns_secret_key | default(aws_secret_key) }}"
+    aws_access_key: "{{ dns_access_key | default(AWS_ACCESS_KEY_ID) }}"
+    aws_secret_key: "{{ dns_secret_key | default(AWS_SECRET_ACCESS_KEY) }}"
     ttl: 120
 
 
@@ -19,8 +19,8 @@
     zone: "{{ domain }}"
     value: "{{ l_openshift_aws_elb_facts[openshift_clusterid + '-master-internal']['dns_name'] }}"
     record: "api.{{ openshift_clusterid }}.{{ domain}}"
-    aws_access_key: "{{ dns_access_key | default(aws_access_key) }}"
-    aws_secret_key: "{{ dns_secret_key | default(aws_secret_key) }}"
+    aws_access_key: "{{ dns_access_key | default(AWS_ACCESS_KEY_ID) }}"
+    aws_secret_key: "{{ dns_secret_key | default(AWS_SECRET_ACCESS_KEY) }}"
     ttl: 120
 
 # infra: route
@@ -31,6 +31,6 @@
     zone: "{{ domain }}"
     value: "{{ l_openshift_aws_elb_facts[openshift_clusterid + '-infra']['dns_name'] }}"
     record: "*.apps.{{ openshift_clusterid }}.{{ domain }}"
-    aws_access_key: "{{ dns_access_key | default(aws_access_key) }}"
-    aws_secret_key: "{{ dns_secret_key | default(aws_secret_key) }}"
+    aws_access_key: "{{ dns_access_key | default(AWS_ACCESS_KEY_ID) }}"
+    aws_secret_key: "{{ dns_secret_key | default(AWS_SECRET_ACCESS_KEY) }}"
     ttl: 120
