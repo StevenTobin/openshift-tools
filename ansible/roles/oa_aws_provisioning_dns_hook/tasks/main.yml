@@ -8,6 +8,7 @@
     record: "{{ openshift_clusterid }}.{{ domain }}"
     aws_access_key: "{{ dns_access_key | default(AWS_ACCESS_KEY_ID) }}"
     aws_secret_key: "{{ dns_secret_key | default(AWS_SECRET_ACCESS_KEY) }}"
+    overwrite: true
     ttl: 120
 
 
@@ -21,6 +22,7 @@
     record: "api.{{ openshift_clusterid }}.{{ domain}}"
     aws_access_key: "{{ dns_access_key | default(AWS_ACCESS_KEY_ID) }}"
     aws_secret_key: "{{ dns_secret_key | default(AWS_SECRET_ACCESS_KEY) }}"
+    overwrite: true
     ttl: 120
 
 # infra: route
@@ -33,4 +35,5 @@
     record: "*.apps.{{ openshift_clusterid }}.{{ domain }}"
     aws_access_key: "{{ dns_access_key | default(AWS_ACCESS_KEY_ID) }}"
     aws_secret_key: "{{ dns_secret_key | default(AWS_SECRET_ACCESS_KEY) }}"
+    overwrite: true
     ttl: 120
