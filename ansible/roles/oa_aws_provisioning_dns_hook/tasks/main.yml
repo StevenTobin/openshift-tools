@@ -43,7 +43,7 @@
   route53:
     state: present
     type: CNAME
-    zone: "rhmi.io"
+    zone: "{{ domain }}"
     value: "{{ l_openshift_aws_elb_facts[openshift_clusterid + '-infra']['dns_name'] }}"
     record: "*.amp.{{ openshift_clusterid }}.rhmi.io"
     aws_access_key: "{{ dns_access_key | default(AWS_ACCESS_KEY_ID) }}"
