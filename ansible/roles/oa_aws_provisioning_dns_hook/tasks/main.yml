@@ -45,7 +45,7 @@
     type: CNAME
     zone: "{{ domain }}"
     value: "{{ l_openshift_aws_elb_facts[openshift_clusterid + '-infra']['dns_name'] }}"
-    record: "*.amp.{{ openshift_clusterid }}.rhmi.io"
+    record: "*.amp.{{ openshift_clusterid }}.{{ domain }}"
     aws_access_key: "{{ dns_access_key | default(AWS_ACCESS_KEY_ID) }}"
     aws_secret_key: "{{ dns_secret_key | default(AWS_SECRET_ACCESS_KEY) }}"
     overwrite: true
